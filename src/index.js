@@ -4,7 +4,7 @@ import { createStore } from 'redux'
 //State
 const initialState = {
     task: '',
-    task: []
+    tasks: []
 }
 
 //Stateを変更するメソッド
@@ -19,7 +19,7 @@ function taskReducer(state = initialState, action) {
         case 'ADD_TASK':
             return {
                 ...state,
-                task: state.task.concat([action.payload.task])
+                tasks: state.task.concat([action.payload.task])
             }
         default:
             return state
@@ -32,7 +32,7 @@ function resetReducer(state = initialState, action) {
         case 'REAET_TASK':
             return {
                 ...state,
-                task: []
+                tasks: []
             }
         default:
             return state
