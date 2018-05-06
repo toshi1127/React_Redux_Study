@@ -11,6 +11,7 @@ function tasksReducer(state = initialState, action) {
     switch (action.type) {
         case 'ADD_TASK':
             return {
+                ...state,
                 task: state.task.concat([action.payload.task])
             };
         default:
