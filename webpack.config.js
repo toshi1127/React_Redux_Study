@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
     entry: './src/index.js',
     output: {
@@ -13,5 +15,11 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    devServer: {
+        contentBase: path.resolve(__dirname, 'dist'),
+        watchContentBase: true,
+        open: true,
+        port: 8080,
+    },
 };
