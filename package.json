@@ -17,10 +17,14 @@
   },
   "homepage": "https://github.com/toshi1127/React_Redux_Study#readme",
   "dependencies": {
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
     "redux": "^4.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-react": "^6.24.1"
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^4.7.0"
   }
 }
