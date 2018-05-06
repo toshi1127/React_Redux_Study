@@ -11,8 +11,7 @@ function tasksReducer(state = initialState, action) {
     switch (action.type) {
         case 'ADD_TASK':
             return {
-                ...state,
-                task: state.task.concat([action.task])
+                task: state.task.concat([action.payload.task])
             };
         default:
             return state;
@@ -32,9 +31,10 @@ const unsubscribe = store.subscribe(handleChange)
 const addTask = (task) => ({
     type: 'ADD_TASK',
     payload: {
-        task
+        task: task
     }
 });
 
+console.log(store.getState())
 //Actionの発行。
 store.dispatch(addTask('Storeを学ぶ'));

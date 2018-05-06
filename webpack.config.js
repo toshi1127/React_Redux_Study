@@ -9,7 +9,7 @@ module.exports = {
                 loader: 'babel-loader',
                 test: /\.js$/,
                 options: {
-                    presets: ['react']
+                    presets: ['react', 'es2015', 'stage-2'],
                 }
             }
         ]
