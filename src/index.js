@@ -1,10 +1,12 @@
 import { createStore } from 'redux'
+import { render } from 'react-dom'
+import React from 'react'
 
 //Reducer(State,Stateを変更するメソッド)
 //State
 const initialState = {
     task: '',
-    tasks: []
+    tasks: ['React','Redux']
 }
 
 //Stateを変更するメソッド
@@ -19,7 +21,7 @@ function taskReducer(state = initialState, action) {
         case 'ADD_TASK':
             return {
                 ...state,
-                tasks: state.task.concat([action.payload.task])
+                tasks: state.tasks.concat([action.payload.task])
             }
         default:
             return state
@@ -46,7 +48,7 @@ const store = createStore(taskReducer)
 function handleChange() {
     console.log(store.getState())
 }
-const unsubscribe = store.subscribe(handleChange)
+//const unsubscribe = store.subscribe(handleChange)
 
 //Action
 const addTask = (task) => ({
@@ -67,9 +69,36 @@ const inputTask = (task) => ({
     }
 })
 
-console.log(store.getState())
-//Actionの発行。
-store.dispatch(addTask('Storeを学ぶ'))
-store.replaceReducer(resetReducer)
-store.dispatch(resetTask())
-console.log(store.getState())
+//Conponent
+function TodoApp({ store }) {
+    const { task, tasks } = store.getState()
+    console.log(tasks)
+    return (
+        <div>
+            <input type='text' onChange={(e) => store.dispatch(inputTask(e.target.value))} />
+            <input type='button' value='add' onClick={() => store.dispatch(addTask(task))} />
+            <ul>
+                {
+                    tasks.map(function (item, i) {
+                        return (
+                            <li key={i}>{item}</li>
+                        )
+                    })
+                }
+            </ul>
+        </div>
+    )
+}
+
+//Conponetの描画
+function renderApp(store){
+    render(
+        <TodoApp store={store}/>,
+        document.getElementById('root')
+    );
+}
+
+//Stateの変更のたびに描写
+store.subscribe(()=> renderApp(store))
+//初回の描写
+renderApp(store);
