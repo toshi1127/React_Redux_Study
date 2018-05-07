@@ -10,7 +10,7 @@ export default function configureStore(history) {
     return reduxCreateStore(
         combineReducers({//ルーティングのためのReducerとアプリケーションの(Stateを管理する)Reducerを合成する必要がある。
             //taskReducerをtaskというkeyに割り当てる
-            task: taskReducer,
+            tasks: taskReducer,
             //ルーティングのためのReducer
             router: routerReducer,
         }),
