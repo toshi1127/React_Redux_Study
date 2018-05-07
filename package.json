@@ -7,11 +7,8 @@
     "start": "webpack-dev-server",
     "build": "webpack"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/toshi1127/React_Redux_Study.git"
-  },
-  "author": "",
+  "repository": "git+https://github.com/toshi1127/React_Redux_Study.git",
+  "author": "toshi1127 <toshi.matsumoto.2n@stu.hosei.ac.jp>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/toshi1127/React_Redux_Study/issues"
