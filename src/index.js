@@ -4,14 +4,19 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import configureStore from './store/configerStore';
 import TodoApp from './containers/TodoApp';
+import createBrowserHistory from 'history/createBrowserHistory'
+import { ConnectedRouter } from 'react-router-redux';
 
-const store = configureStore()
+const history = createBrowserHistory()
+const store = configureStore(history)
 
 //Conponetの描画
 function renderApp(store) {
     render(
         <Provider store={store}>
-            <TodoApp />
+            <ConnectedRouter history={history}>
+                <TodoApp />
+            </ConnectedRouter>
         </Provider>,
         document.getElementById('root')
     );
