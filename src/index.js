@@ -7,7 +7,8 @@ import configureStore from './store/configerStore';
 import TodoApp from './containers/TodoApp';
 import createBrowserHistory from 'history/createBrowserHistory'
 import { ConnectedRouter } from 'react-router-redux';
-import Error from './components/Error';
+import ErrorComponent from './components/Error';
+
 
 const history = createBrowserHistory()
 const store = configureStore(history)
@@ -17,8 +18,10 @@ function renderApp(store) {
     render(
         <Provider store={store}>
             <ConnectedRouter history={history}>
-                <Route exact path='/' component={TodoApp} />
-                <Route exact path='/error' component={Error} />
+                <div>
+                    <Route exact path='/' component={TodoApp} />
+                    <Route exact path='/error' component={ErrorComponent} />
+                </div>
             </ConnectedRouter>
         </Provider>,
         document.getElementById('root')
