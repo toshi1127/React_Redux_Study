@@ -6,7 +6,7 @@ import {
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 import taskReducer from '../reducers/tasks';
 
-export default function configureStore() {
+export default function configureStore(history) {
     return reduxCreateStore(
         combineReducers({//ルーティングのためのReducerとアプリケーションの(Stateを管理する)Reducerを合成する必要がある。
             //taskReducerをtaskというkeyに割り当てる
@@ -14,7 +14,7 @@ export default function configureStore() {
             //ルーティングのためのReducer
             router: routerReducer,
         }),
-        applyMiddleware(
+        applyMiddleware(//Action経由でルーティングが制御できるようになる。
             //react-redux-routerのMiddleware
             routerMiddleware(history)
         )
