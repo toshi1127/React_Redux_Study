@@ -4,6 +4,8 @@ import {
     applyMiddleware
 } from 'redux';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
+import logger from 'redux-logger'
+import thunk from 'redux-thunk'
 import taskReducer from '../reducers/tasks';
 
 export default function configureStore(history) {
@@ -16,7 +18,9 @@ export default function configureStore(history) {
         }),
         applyMiddleware(//Action経由でルーティングが制御できるようになる。
             //react-redux-routerのMiddleware
-            routerMiddleware(history)
+            routerMiddleware(history),
+            logger,
+            thunk
         )
     )
 }
