@@ -7,6 +7,7 @@ import Typography from 'material-ui/Typography'
 import Input from 'material-ui/Input'
 import List, { ListItem, ListItemText } from 'material-ui/List';
 import styled from 'styled-components';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 const TodoList = styled.div`
   padding:16px;
@@ -28,6 +29,7 @@ export default function TodoApp({ task, tasks, inputTask, addTask, redirectToErr
                 <Input type='text' onChange={(e) => inputTask(e.target.value)} />
                 <Button raised color='primary' onClick={() => addTask(task)} >add</Button>
                 <List>
+                    <ReactCSSTransitionGroup transitionName='example' transitionEnterTimeout={300}>
                     {
                         tasks.map(function (item, i) {
                             return (
@@ -37,6 +39,7 @@ export default function TodoApp({ task, tasks, inputTask, addTask, redirectToErr
                             )
                         })
                     }
+                    </ReactCSSTransitionGroup>
                 </List>
                 <button onClick={() => redirectToError()}>エラーページへ</button>
             </TodoList>
